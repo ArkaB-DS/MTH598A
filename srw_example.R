@@ -20,9 +20,9 @@ run.adaprw <- function(sample.size=1e3,s=3){
   return(list(mc=mc,acc.prob=acc.prob))
 }
 # MC <- run.adaprw()
-# plot(cumsum(MC$acc.prob)/(1:sample.size),type="l",col="red",
+# plot(cumsum(MC$acc.prob)/(1:length(MC$acc.prob)),type="l",col="red",
 #      ylab="Acceptance Probability",xlab="Iterations")
-# abline(h=0.234,lty=2,col="blue")
+# abline(h=0.44,lty=2,col="blue")
 
 checkcoverage<-function(alpha=0.05,iterations=5e2,sample.size=1e3,prop.sd=3){
   in.or.out <- numeric(iterations)
@@ -44,5 +44,5 @@ display.coverage[3] <- checkcoverage(sample.size = 1e5)
 colnames(display.coverage) <- c("1e4 iterations","1e5 iterations","1e6 iterations")
 rownames(display.coverage) <- "coverage probability"
 display.coverage
-1e4 iterations 1e5 iterations 1e6 iterations
-coverage probability          0.902           0.94          0.948
+#                      1e4 iterations 1e5 iterations 1e6 iterations
+# coverage probability          0.902           0.94          0.948
