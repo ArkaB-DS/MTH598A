@@ -36,18 +36,18 @@ chains<-function(shift=0){
     if(runif(1) < acc.prob){
       x[i] <- y
       alpha[i] <- 1
-      theta[i] <- max(a, min(theta[i-1] + (theta[1]/(i-1))*(1-0.28), A))
+      theta[i] <- max(a, min(theta[i-1] + (10/(i-1))*(1-0.3), A))
 
     }else{
       x[i] <- x[i-1]
       alpha[i] <- 0
-      theta[i] <- max(a, min(theta[i-1] + (theta[1]/(i-1))*(0-0.28), A))
+      theta[i] <- max(a, min(theta[i-1] + (10/(i-1))*(0-0.3), A))
     }
   }
   return(list(alpha=alpha,theta=theta,x=x))
 }
 par(mfcol=c(2,3))
-for(i in 0:2){
+for(i in c(0,1,2)){
   chain <-chains(i)
   plot(chain$theta,type="l",ylab=expression(theta[n]),xlab ="iterations",col="blue")
   plot(cumsum(chain$alpha)/(1:sample.size),type="l",col="red",ylab=expression(alpha[n]),xlab="iterations")
