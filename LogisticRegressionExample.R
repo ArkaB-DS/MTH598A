@@ -49,7 +49,7 @@ data_X = data.matrix(data_X)
 X = data_X
 Y = data.matrix(ifelse(data[,14]==0,0,1))
 
-N = 1e5
+N = 1e6
 d = 13
 s = 20
 
@@ -61,7 +61,9 @@ acc.prob = numeric(N)
 
 # c = -2.3
 # Sigma = exp(c)*diag(d)
-f <- function(beta) sum(dbinom(Y,size=1,prob=1/(1+exp(-X%*%beta)),log=TRUE))+sum(dnorm(beta,0,s,log=TRUE))
+#f <- function(beta) sum(dbinom(Y,size=1,prob=1/(1+exp(-X%*%beta)),log=TRUE))+sum(dnorm(beta,0,s,log=TRUE))
+
+f <- function(beta) prod(dbinom(Y,size=1,prob=1/(1+exp(-X%*%beta))))*prod(dnorm(beta,0,s))
 
 for(i in 2:N){
   if( i %% 1e3 == 0) {
@@ -93,4 +95,3 @@ for(i in 2:N){
 mean(acc.prob)
 plot(cumsum(acc.prob)/(1:N),col="red",type="l",xlab="",ylab="")
 abline(h=0.23,col="blue",lty=2)
-
