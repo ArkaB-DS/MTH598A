@@ -61,7 +61,7 @@ coverage.adap[3] <- checkcoverage.adap(sample.size = 1e5)
 colnames(coverage.adap) <- c("1e4 iterations","1e5 iterations","1e6 iterations")
 rownames(coverage.adap) <- "coverage probability"
 coverage.adap
-#                      1e4 iterations 1e5 iterations 1e6 iterations
+#                      1e3 iterations 1e4 iterations 1e5 iterations
 # coverage probability          0.902           0.94          0.948
 
 checkcoverage<-function(alpha=0.05,iterations=5e2,sample.size=1e3,prop.sd=3.3){
@@ -84,5 +84,5 @@ coverage[3] <- checkcoverage(sample.size = 1e5)
 colnames(coverage) <- c("1e4 iterations","1e5 iterations","1e6 iterations")
 rownames(coverage) <- "coverage probability"
 coverage
-#                      1e4 iterations 1e5 iterations 1e6 iterations
+#                      1e3 iterations 1e4 iterations 1e5 iterations
 # coverage probability           0.94          0.956          0.952
