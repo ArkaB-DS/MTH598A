@@ -54,16 +54,6 @@ checkcoverage.adap<-function(alpha=0.05,iterations=5e2,sample.size=1e3,prop.sd=3
   }
   return (mean(in.or.out))
 }
-coverage.adap <- matrix(0,nrow=1,ncol=3)
-coverage.adap[1] <- checkcoverage.adap(sample.size = 1e3)
-coverage.adap[2] <- checkcoverage.adap(sample.size = 1e4)
-coverage.adap[3] <- checkcoverage.adap(sample.size = 1e5)
-colnames(coverage.adap) <- c("1e4 iterations","1e5 iterations","1e6 iterations")
-rownames(coverage.adap) <- "coverage probability"
-coverage.adap
-#                      1e3 iterations 1e4 iterations 1e5 iterations
-# coverage probability          0.902           0.94          0.948
-
 checkcoverage<-function(alpha=0.05,iterations=5e2,sample.size=1e3,prop.sd=3.3){
   in.or.out <- numeric(iterations)
   for (j in 1:iterations){
@@ -77,12 +67,24 @@ checkcoverage<-function(alpha=0.05,iterations=5e2,sample.size=1e3,prop.sd=3.3){
   }
   return (mean(in.or.out))
 }
+
+set.seed(8)
+coverage.adap <- matrix(0,nrow=1,ncol=3)
+coverage.adap[1] <- checkcoverage.adap(sample.size = 1e3)
+coverage.adap[2] <- checkcoverage.adap(sample.size = 1e4)
+coverage.adap[3] <- checkcoverage.adap(sample.size = 1e5)
+colnames(coverage.adap) <- c("1e3 iterations","1e4 iterations","1e5 iterations")
+rownames(coverage.adap) <- "coverage probability"
+coverage.adap
+#                      1e3 iterations 1e4 iterations 1e5 iterations
+# coverage probability          0.936           0.946         0.948
+
 coverage <- matrix(0,nrow=1,ncol=3)
 coverage[1] <- checkcoverage(sample.size = 1e3)
 coverage[2] <- checkcoverage(sample.size = 1e4)
 coverage[3] <- checkcoverage(sample.size = 1e5)
-colnames(coverage) <- c("1e4 iterations","1e5 iterations","1e6 iterations")
+colnames(coverage) <- c("1e3 iterations","1e4 iterations","1e5 iterations")
 rownames(coverage) <- "coverage probability"
 coverage
 #                      1e3 iterations 1e4 iterations 1e5 iterations
-# coverage probability           0.94          0.956          0.952
+# coverage probability           0.932         0.946          0.936
