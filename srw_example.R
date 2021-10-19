@@ -1,4 +1,4 @@
-run.rw <- function(sample.size=1e3,s=3.3){
+run.rw <- function(sample.size=1e3,s=3.1){
   mc <- numeric(sample.size)
   acc.prob <- numeric(sample.size)
   z <- rnorm(sample.size)
@@ -15,7 +15,7 @@ run.rw <- function(sample.size=1e3,s=3.3){
   }
   return(list(mc=mc,acc.prob=acc.prob))
 }
-run.adaprw <- function(sample.size=1e3,s=3){
+run.adaprw <- function(sample.size=1e3,s=3.1){
   mc <- numeric(sample.size)
   #lag.est <- numeric(sample.size)
   acc.prob <- numeric(sample.size)
@@ -54,7 +54,7 @@ checkcoverage.adap<-function(alpha=0.05,iterations=5e2,sample.size=1e3,prop.sd=3
   }
   return (mean(in.or.out))
 }
-checkcoverage<-function(alpha=0.05,iterations=5e2,sample.size=1e3,prop.sd=3.3){
+checkcoverage<-function(alpha=0.05,iterations=5e2,sample.size=1e3,prop.sd=3.1){
   in.or.out <- numeric(iterations)
   for (j in 1:iterations){
     if(j%%1e2==0) print(j/1e2)
