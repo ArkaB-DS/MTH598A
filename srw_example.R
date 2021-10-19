@@ -87,4 +87,4 @@ colnames(coverage) <- c("1e3 iterations","1e4 iterations","1e5 iterations")
 rownames(coverage) <- "coverage probability"
 coverage
 #                      1e3 iterations 1e4 iterations 1e5 iterations
-# coverage probability           0.932         0.946          0.936
+# coverage probability           0.944        0.946          0.952
