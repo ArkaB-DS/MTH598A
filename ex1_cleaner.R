@@ -13,7 +13,7 @@ q_xy <- function(x,y,t){
   return(ifelse( (y >= x-t) & (y <= x + t), 1/(2*t), 0))
 }
 
-sample.size <- 5e5
+sample.size <- 1e6
 chains<-function(shift=0){
   # create the markov chain
   x <- numeric(sample.size)
@@ -46,10 +46,25 @@ chains<-function(shift=0){
   }
   return(list(alpha=alpha,theta=theta,x=x))
 }
-par(mfcol=c(2,3))
-for(i in c(0,1,2)){
+set.seed(8)
+par(mfcol=c(2,2))
+for(i in c(0,1.5)){
   chain <-chains(i)
   plot(chain$theta,type="l",ylab=expression(theta[n]),xlab ="iterations",col="blue")
-  plot(cumsum(chain$alpha)/(1:sample.size),type="l",col="red",ylab=expression(alpha[n]),xlab="iterations")
-  abline(h=0.28,lty=2,col="blue")
+  plot(cumsum(chain$alpha)/(1:sample.size),type="l",col="blue",
+       ylab=expression(alpha[n]),xlab="iterations")
+  abline(h=0.30,lty=2,col="red")
 }
+set.seed(8)
+par(mfcol=c(1,2))
+for(i in c(0,1.5)){
+  chain <-chains(i)
+  x = NULL
+  for (j in seq(5e3,1e6,5e3)){
+    if (j%%5e2==0) cat("j=",j/5e2,"\n")
+    x = c(x,as.numeric(mcmcse::mcse.multi(chain$x[1:j], method = "bartlett", r = 1, size = "sqroot")$cov))
+  }
+  plot(x,type="l",xlab="iterations",ylab="lag-window estimator",col="blue",xaxt="n")
+}
+
+
