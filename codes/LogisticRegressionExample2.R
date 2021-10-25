@@ -131,17 +131,3 @@ coverage.adap[3] <- checkcoverage.adap(sample.size = 1e5)
 colnames(coverage.adap) <- c("1e4 iterations","1e5 iterations","1e6 iterations")
 rownames(coverage.adap) <- "coverage probability"
 coverage.adap
-
-
-
-
-
-
-
-
-
-
-
-
-
-
