@@ -9,10 +9,10 @@ data_X[, 9] = as.factor(as.numeric(data_X[, 9]))
 data_X = data.matrix(data_X)
 #data_X[,c(4,5,8)] = data_X[,c(4,5,8)]/1e3
 X = data_X
-Y = data.matrix(ifelse(data[, 14]==0, 0, 1))
+Y = data.matrix(ifelse(data[, 14] == 0, 0, 1))
 
 ## defining target (posterior) distribution
-f <- function(beta, s=20) sum(dbinom(Y, size=1, prob=1/(1+exp(-X%*%beta))), log=TRUE)+
+f <- function(beta, s=20) sum(dbinom(Y, size=1, prob=1/(1+exp(-X%*%beta))), log = TRUE) +
   sum(dnorm(beta, 0, s, log = TRUE))
 
 ## posterior mean calculated from 1e6 iterations is taken as the true mean
@@ -98,26 +98,28 @@ checkcoverage.adap<-function(alpha = 0.05, iterations = 5e2, N = 1e3, d = 13){
 
 set.seed(8)
 coverage <- matrix(0, nrow = 1, ncol = 3)
-coverage[1] <- checkcoverage(N = 1e3)
+coverage[,1] <- checkcoverage(N = 1e3)
 coverage
-coverage[2] <- checkcoverage(N = 1e4)
+coverage[,2] <- checkcoverage(N = 1e4)
 coverage
-coverage[3] <- checkcoverage(N = 1e5)
+coverage[,3] <- checkcoverage(N = 1e5)
 colnames(coverage) <- c("1e3 iterations","1e4 iterations","1e5 iterations")
 rownames(coverage) <- "coverage probability"
 coverage
-# coverage[3,] <- checkcoverage(N = 1e5)
+
 # coverage
-# 1     2     3     4     5     6     7     8     9    10    11    12    13
-# 1e3 iterations 0.058 0.032 0.006 0.040 0.054 0.130 0.070 0.036 0.004 0.016 0.124 0.002 0.006
-# 1e4 iterations 0.060 0.102 0.102 0.006 0.024 0.094 0.116 0.016 0.084 0.082 0.092 0.102 0.100
+#                       1e3 iterations 1e4 iterations 1e5 iterations
+# coverage probability          0.006          0.054              0
 
 coverage.adap <- matrix(0, nrow = 1 , ncol = 3)
-coverage.adap[1] <- checkcoverage(N = 1e3)
+coverage.adap[,1] <- checkcoverage(N = 1e3)
 coverage.adap
-coverage.adap[2] <- checkcoverage(N = 1e4)
+coverage.adap[,2] <- checkcoverage(N = 1e4)
 coverage.adap
-coverage.adap[3] <- checkcoverage(N = 1e5)
+coverage.adap[,3] <- checkcoverage(N = 1e5)
 colnames(coverage.adap) <- c("1e3 iterations", "1e4 iterations", "1e5 iterations")
 rownames(coverage.adap) <- "coverage probability"
 coverage.adap
+# > coverage.adap
+#                       1e3 iterations 1e4 iterations 1e5 iterations
+# coverage probability          0.004          0.038              0
