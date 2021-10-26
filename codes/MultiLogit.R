@@ -48,8 +48,8 @@ checkcoverage<-function(alpha = 0.05, iterations = 5e2, N = 1e3, d = 13){
     simpleMC <- run.rw(N = N, d = d)
     MC <- simpleMC$mc
     Gamma.n.sq.h <- mcmcse::mcse.multi(MC, method = "bartlett", r = 1, size = "sqroot")$cov
-    T <- (N-d)/d/(N-1) * t(colMeans(MC)-post.beta) %*% solve(Gamma.n.sq.h) %*% (colMeans(MC)-post.beta)
-    in.or.out[j] <- as.numeric(T >= qf(alpha/2, d, N-d) & T <= qf(1-alpha/2, d, N-d))
+    T <- t(colMeans(MC)-post.beta) %*% solve(Gamma.n.sq.h) %*% (colMeans(MC)-post.beta)
+    in.or.out[j] <- as.numeric(T >= qchisq(alpha/2, d) & T <= qchisq(1-alpha/2, d))
   }
   return (mean(in.or.out))
 }
@@ -89,8 +89,8 @@ checkcoverage.adap<-function(alpha = 0.05, iterations = 5e2, N = 1e3, d = 13){
     adapMC <- run.adaprw(N = N, d = d)
     MC <- adapMC$mc
     Gamma.n.sq.h <- mcmcse::mcse.multi(MC, method = "bartlett", r = 1, size = "sqroot")$cov
-    T <- (N-d)/d/(N-1) * t(colMeans(MC)-post.beta) %*% solve(Gamma.n.sq.h) %*% (colMeans(MC)-post.beta)
-    in.or.out[j] <- as.numeric(T >= qf(alpha/2, d, N-d) & T <= qf(1-alpha/2, d, N-d))
+    T <- t(colMeans(MC)-post.beta) %*% solve(Gamma.n.sq.h) %*% (colMeans(MC)-post.beta)
+    in.or.out[j] <- as.numeric(T >= qchisq(alpha/2, d) & T <= qchisq(1-alpha/2, d))
   }
   return (mean(in.or.out))
 }
