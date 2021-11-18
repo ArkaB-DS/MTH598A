@@ -6,7 +6,7 @@ X <- as.matrix(data[, -1]) # DEFINING DESIGN MATRIX
 Y <- data[, 1] # DEFINING Y VARIABLE
 
 # DEFINING TARGET DISTRIBUTION
-f <- function(beta, s = 5) sum(dbinom(Y, size=1, prob=1/(1+exp(-X%*%beta))), log = TRUE) +
+f <- function(beta, s = 2) sum(dbinom(Y, size=1, prob=1/(1+exp(-X%*%beta))), log = TRUE) +
   sum(dnorm(beta, 0, s, log = TRUE))
 
 ## NON ADAPTIVE MCMC
@@ -20,9 +20,9 @@ run.rw <- function(N = 1e3, d = 4){
 
   for(i in 2:N){
 
-    # if(i%%1e3==0) print(i/1e3)
+    if(i%%1e3==0) print(i/1e3)
 
-    y <- rnorm(d, 0, 3.1) + beta[i-1, ]
+    y <- rnorm(d, 0, 1.57) + beta[i-1, ]
 
     alpha <- f(y) - f(beta[i-1, ])
 
@@ -44,7 +44,7 @@ mean(run.rw(N = 1e5)$acc.prob)
 run.adaprw <- function(N = 1e3, d = 4){
 
   beta <- matrix(0, nrow = N, ncol = d)
-  beta[1,] <- coef(glm(Y ~ X - 1,family = "binomial"))
+  beta[1,] <- coef(glm(Y ~ X - 1, family = "binomial"))
 
   Sigma <- 2.38^2/d*diag(d)
 
@@ -57,7 +57,7 @@ run.adaprw <- function(N = 1e3, d = 4){
     if( i < 2*d ) {
       y <- rnorm( d , beta[i-1, ] , 0.1 / sqrt(d) )
     }else {
-      b <- rbinom(1, size=1, prob = 0.01)
+      b <- rbinom(1, size=1, prob = 00.1)
       Sigma <- cov(beta[1:(i-1), ])
       y <- b * rnorm(d, beta[i-1, ], 0.1/sqrt(d)) + (1 - b) *
         as.vector(mvtnorm::rmvnorm(1, mean = beta[i-1, ],sigma = 2.38^2*Sigma/d))
