@@ -5,7 +5,7 @@ run.rw <- function(sample.size=1e3,s=3.1){
   mc[1] <- z[1]
   for (i in 2:sample.size){
     y <- mc[i-1] + s* z[i]
-    alpha <- min(1,dnorm(y)/dnorm(mc[i-1],sd=s))
+    alpha <- min(1,dnorm(y)/dnorm(mc[i-1]))
     if(runif(1)<alpha) {
       mc[i] <- y
       acc.prob[i] <- 1
@@ -23,7 +23,7 @@ run.adaprw <- function(sample.size=1e3,s=3.1){
   mc[1] <- z[1]
   for (i in 2:sample.size){
     y <- mc[i-1] + s* z[i]
-    alpha <- min(1,dnorm(y)/dnorm(mc[i-1],sd=s))
+    alpha <- min(1,dnorm(y)/dnorm(mc[i-1]))
     if(runif(1)<alpha) {
         mc[i] <- y
         acc.prob[i] <- 1

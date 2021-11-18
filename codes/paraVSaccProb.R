@@ -35,3 +35,4 @@ for (i in 2 : sample.size){
 a[j] <- mean(alpha)
 }
 plot(x=theta,y=a,type="l",col="blue",xlab=expression(theta),ylab="Acceptance Probability")
+abline(h=0.30,col = "red", lty = 2)
