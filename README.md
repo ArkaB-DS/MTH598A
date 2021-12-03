@@ -3,11 +3,24 @@
 > This repo is for the course **MTH598A: M.Sc. Project-I** during the academic session 2021-2022 (odd semester) at IIT Kanpur.
 
 ## Project Title:
-`Understanding Confidence Intervals in Adaptive Markov Chain Monte Carlo`
+[`Understanding Confidence Intervals in Adaptive Markov Chain Monte Carlo`](https://github.com/ArkaB-DS/MTH598A/blob/main/Report.pdf)
 
 ## Project Supervisor:
 
 [Prof. Dootika Vats, Department of Mathematics and Statistics, IIT Kanpur.](https://dvats.github.io/)
+
+## Report Contents:
+
+|Section | Topic |
+|------|-----|
+|1       |Introduction|
+|2       |Ergodicity <ul>2.1 Sufficient Conditions for Ergodicity in AMCMC</ul>|
+|3       |Asymptotic Variance Estimation|
+|4       |Main Results <ul> 4.1 Setup and nontations </ul> <ul> 4.2 Assumptions </ul> <ul> 4.3 Theorems </ul>|
+|5       |Examples <ul>Univariate Standard Normal</ul> <ul> Multivariate Logistic Regression </ul>|
+|6       |Conclusion|
+|7       |Supplementary Material|
+|8       |Acknowledgements|
 
 
 ## Key References:
