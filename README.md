@@ -17,7 +17,7 @@
 |2       |Ergodicity <ul>2.1 Sufficient Conditions for Ergodicity in AMCMC</ul>|
 |3       |Asymptotic Variance Estimation|
 |4       |Main Results <ul> 4.1 Setup and nontations </ul> <ul> 4.2 Assumptions </ul> <ul> 4.3 Theorems </ul>|
-|5       |Examples <ul>Univariate Standard Normal</ul> <ul> Multivariate Logistic Regression </ul>|
+|5       |Examples <ul> 5.1 Univariate Standard Normal</ul> <ul> 5.2 Multivariate Logistic Regression </ul>|
 |6       |Conclusion|
 |7       |Supplementary Material|
 |8       |Acknowledgements|
