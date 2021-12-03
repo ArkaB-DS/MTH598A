@@ -3,11 +3,11 @@
 > This repo is for the course **MTH598A: M.Sc. Project-I** during the academic session 2021-2022 (odd semester) at IIT Kanpur.
 
 ## Project Title:
-**`Understanding Confidence Intervals in Adaptive Markov Chain Monte Carlo`** [_Report_](https://github.com/ArkaB-DS/MTH598A/blob/main/Report.pdf)
+**`Understanding Confidence Intervals in Adaptive Markov Chain Monte Carlo`** [[_Report_]](https://github.com/ArkaB-DS/MTH598A/blob/main/Report.pdf)
 
 ## Project Supervisor:
 
-[**Prof. Dootika Vats**](https://dvats.github.io/), Department of Mathematics and Statistics, IIT Kanpur.
+[**_Prof. Dootika Vats_**](https://dvats.github.io/), Department of Mathematics and Statistics, IIT Kanpur.
 
 ## Report Contents:
 
